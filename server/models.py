@@ -63,6 +63,9 @@ class Physician(db.Model, SerializerMixin):
 
         return office_number
 
+    appointments = db.relationship('Appointment', back_populates='physician', cascade='all, delete-orphan')
+    orders = db.relationship('Order', back_populates='physician', cascade='all, delete-orphan')
+
     def __repr__(self):
 	    return f'Physician Name: {self.first_name} {self.last_name}'
 
@@ -132,6 +135,9 @@ class Patient(db.Model, SerializerMixin):
 
         return phone_number
 
+    appointments = db.relationship('Appointment', back_populates='patient', cascade='all, delete-orphan')
+    orders = db.relationship('Order', back_populates='patient', cascade='all, delete-orphan')
+
     def __repr__(self):
         return f'Patient Name: {self.first_name} {self.last_name}'
 
@@ -148,6 +154,9 @@ class Appointment(db.Model, SerializerMixin):
 
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'))
     physician_id=db.Column(db.Integer, db.ForeignKey('physicians.id'))
+
+    physician = db.relationship('Physician', back_populates='appointments')
+    patient = db.relationship('Patient', back_populates='appointments')
 
     @validates('time')
     def validate_time(self, key, time):
@@ -176,6 +185,9 @@ class Order(db.Model, SerializerMixin):
         types = ['medication', 'therapy', 'scan', 'other', 'test', 'labs', 'discontinue']
         if order_type not in types:
             raise ValueError("Invalid order type")
+
+    physician = db.relationship('Physician', back_populates='orders')
+    patient = db.relationship('Patient', back_populates='orders')
 
     def __repr__(self):
         return f'Order: {self.order}'
