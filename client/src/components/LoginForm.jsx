@@ -1,12 +1,13 @@
 import React from 'react'
 import {useState} from 'react'
+import {useOutletContext} from 'react-router-dom'
 
-function LoginForm({setLoggedIn}){
+function LoginForm(){
     const [username, setUsername] = useState("")   
     const [password, setPassword] = useState("")
 
+    const {loggedIn}=useOutletContext()
 
-    //Must change setPatient and setLoggedIn 
     function handleSubmit(e){
         e.preventDefault();
         const credentialsObj = {
@@ -22,7 +23,7 @@ function LoginForm({setLoggedIn}){
             body : JSON.stringify(credentialsObj),
         })
         .then(r=>{if(r.ok){
-            r.json().then(signedInPatient=>{console.log(signedInPatient),setLoggedIn(true)})
+            r.json().then(signedInPatient=>{console.log(signedInPatient),loggedIn[1]})
         }})
         
     };

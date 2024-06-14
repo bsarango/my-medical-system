@@ -1,10 +1,12 @@
 import React, { useEffect,useState } from 'react'
 import OrderForm from '../components/OrderForm'
 import Order from '../components/Order'
+import {useOutletContext} from 'react-router-dom'
 
 function Orders(){
 
     const [orders, setOrders] = useState([])
+    const {loggedIn} = useOutletContext()
 
     useEffect(()=>{ 
       fetch("/api/orders")
@@ -41,7 +43,7 @@ function Orders(){
         setOrders(newOrderList)
     }
 
-    if(!loggedIn){
+    if(!loggedIn[0]){
         return(
             <div>
                 <p>Please Log in to Use our Services</p>

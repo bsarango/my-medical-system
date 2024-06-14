@@ -26,7 +26,7 @@ function App() {
         <NavBar/>
         <button className="bg-transparent hover:bg-blue-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded" onClick={e=>{setLoggedIn(false)}}>LogOut</button>
       </header>
-      <Outlet context={[loggedIn,setLoggedIn]}/>
+      <Outlet context={{loggedIn:[loggedIn,setLoggedIn]}}/>
     </>
   )
 }

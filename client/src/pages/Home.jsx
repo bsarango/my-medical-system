@@ -5,7 +5,7 @@ function Home(){
 
     const {loggedIn} = useOutletContext()
 
-    if(!loggedIn){
+    if(!loggedIn[0]){
         return(
             <div>
                 <p>Please Log in to Use our Services</p>

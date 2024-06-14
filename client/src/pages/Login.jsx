@@ -5,7 +5,7 @@ import {useOutletContext} from "react-router-dom"
 function Login(){
 
     const {loggedIn} = useOutletContext()
-    if(loggedIn){
+    if(loggedIn[0]){
         return(
             <p>Already Logged In. Please return Home or select an option from the tabs to continue</p>
         )

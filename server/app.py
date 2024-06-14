@@ -117,7 +117,7 @@ class CheckSession(Resource):
 
         if physician_id:
             physician = Physician.query.filter(Physician.id == physician_id).first()
-            return patient.to_dict(), 200
+            return physician.to_dict(), 200
             
         return {'error':'Physician not signed in. Please sign in.'} , 401
 
