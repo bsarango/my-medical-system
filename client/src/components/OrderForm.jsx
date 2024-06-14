@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 function OrderForm({ onAddOrder}){
 
@@ -33,7 +33,6 @@ function OrderForm({ onAddOrder}){
 
     function handleSubmit(e){
         e.preventDefault();
-        setSpecialty(selectedSpecialty)
 
         const formValues = {
             category:category,
@@ -41,7 +40,7 @@ function OrderForm({ onAddOrder}){
             details:details,
             patient: selectedPatient
         }
-        console.log(appointmentObj)
+
         fetch('/api/orders',
         {
             method: "POST",
@@ -114,11 +113,8 @@ function OrderForm({ onAddOrder}){
                     onChange = {(e)=>{setDetails(e.target.value)}}
                 />
                 <br></br>
-                <label>Is the Order completed?</label>
-                <button onClick={e=>{setComplete(True)}}></button>
-                <br></br>
                 <label>Select Patient for the Order</label>
-                <select onClick={e=>{setSelectedPatient(e.target.value)}}>
+                <select onChange={e=>{setSelectedPatient(e.target.value)}}>
                     {patientOptions}
                 </select>
                 <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Make Appointment</button>

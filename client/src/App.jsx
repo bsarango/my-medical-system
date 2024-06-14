@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import NavBar from './components/Navbar'
 import {Outlet} from "react-router-dom"
 import './App.css'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
     
   useEffect(()=>{   //To update state
     fetch("/api/check_session")

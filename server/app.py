@@ -1,6 +1,7 @@
 from flask import request, session, send_from_directory
 from flask_restful import Resource
 from config import api, db, app
+from datetime import datetime
 
 from models import Physician, Patient, Appointment, Order
 
@@ -66,9 +67,9 @@ class Orders(Resource):
             new_order = Order(category=json.get('category'), complete=json.get('complete'), details=json.get('details'), timeStamp=time_stamp_string, physician_id=session.get('physician_id'), patient_id = json.get('patient'))
 
             try:
-                db.session.add(order)
+                db.session.add(new_order)
                 db.session.commit()
-                return order.to_dict(), 201
+                return new_orderorder.to_dict(), 201
             
             except ValueError:
                 return {'error': 'Invalid input made to order. Try again.'}, 400
@@ -91,7 +92,7 @@ class OrdersById(Resource):
                 db.session.add(order)
                 db.session.commit()
 
-                return appointment.to_dict(), 200
+                return order.to_dict(), 200
             except ValueError:
                 return {'error':'Invalid inputs to the order given. Try again.'}, 400
 

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import OrderForm from '../components/OrderForm'
 import Order from '../components/Order'
-import {useOutletContext} from 'react-router-dom'
+import {Link, useOutletContext} from 'react-router-dom'
 
 function Orders(){
 
@@ -17,10 +17,10 @@ function Orders(){
         });
         };
       });
-    },[]);
+    },[loggedIn]);
 
     const ordersToDisplay = orders.map(order=>{
-        return <Order order={order} onDelete={removeOrder} onUpdate={updateOrderList}/>
+        return <Order key={order.id} order={order} onDelete={removeOrder} onUpdate={updateOrderList}/>
     })
 
     function updateOrderList(updatedOrder){
@@ -57,7 +57,7 @@ function Orders(){
     return(
         <div>
             <h3>Enter information to make a new order</h3>
-            <OrderForm onAddOrder={addOrderToList} patients={patients}/>
+            <OrderForm onAddOrder={addOrderToList}/>
             <br></br>
             <h2>Your current orders</h2>
             {ordersToDisplay}

@@ -67,6 +67,8 @@ class Physician(db.Model, SerializerMixin):
     appointments = db.relationship('Appointment', back_populates='physician', cascade='all, delete-orphan')
     orders = db.relationship('Order', back_populates='physician', cascade='all, delete-orphan')
 
+    serialize_rules = ('-appointments.physician','-orders.physician')
+
     def __repr__(self):
 	    return f'Physician Name: {self.first_name} {self.last_name}'
 
@@ -139,6 +141,8 @@ class Patient(db.Model, SerializerMixin):
     appointments = db.relationship('Appointment', back_populates='patient', cascade='all, delete-orphan')
     orders = db.relationship('Order', back_populates='patient', cascade='all, delete-orphan')
 
+    serialize_rules = ('-appointments.patient','-orders.patient')
+
     def __repr__(self):
         return f'Patient Name: {self.first_name} {self.last_name}'
 
@@ -158,6 +162,8 @@ class Appointment(db.Model, SerializerMixin):
 
     physician = db.relationship('Physician', back_populates='appointments')
     patient = db.relationship('Patient', back_populates='appointments')
+
+    serialize_rules = ('-physician.appointments','-patient.appointments')
 
     @validates('time')
     def validate_time(self, key, time):
@@ -187,13 +193,15 @@ class Order(db.Model, SerializerMixin):
     physician_id=db.Column(db.Integer, db.ForeignKey('physicians.id'))
 
     @validates('category')
-    def validate_category(self,key,order_type):
+    def validate_category(self,key,category):
         types = ['medication', 'therapy', 'scan', 'other', 'test', 'labs', 'discontinue']
         if category not in types:
             raise ValueError("Invalid order type")
 
     physician = db.relationship('Physician', back_populates='orders')
     patient = db.relationship('Patient', back_populates='orders')
+
+    serialize_rules = ('-physician.orders','-patient.orders')
 
     def __repr__(self):
         return f'Order: {self.order}'

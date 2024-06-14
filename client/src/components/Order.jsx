@@ -100,9 +100,9 @@ function Order({order, onUpdate, onDelete}){
                     />
                     <br></br>
                     <label>Is the Order completed?</label>
-                    <button onClick={e=>{setComplete(True)}}></button>
+                    <button onClick={e=>{setComplete(false)}}></button>
                     <br></br>
-                    <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Make Appointment</button>
+                    <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Update Order</button>
                 </form>
                 <button onClick={(e)=>{setUpdateOrder(false)}}>Cancel Update on Order</button>
                 <button onClick={(e)=>{deletedOrder}}>Delete Order</button>
