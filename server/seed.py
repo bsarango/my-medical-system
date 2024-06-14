@@ -32,7 +32,7 @@ if __name__ == '__main__':
         db.session.add(physician_1)
         db.session.commit()
 
-        username_2 = "jdoemd54321
+        username_2 = "jdoemd54321"
         password_2 = "bestdoctor!"
         first_name_2 = "Jane"
         last_name_2 = "Doe"
@@ -95,22 +95,22 @@ if __name__ == '__main__':
 
         print("Seeding Orders")
 
-        order_type_1 = "test"
+        category_1 = "test"
         complete_1 = False
         details_1 = "Perform EKG on patient. Send to EMR for review by Physician"
-        timeStamp_1 = str(datetime.now())
+        timeStamp_1 = (datetime.now()).strftime("%Y-%b-%a-%X")
 
-        order_1 = Order(order_type=order_type_1, complete=complete_1, details=details_1, timeStamp=timeStamp_1)
+        order_1 = Order(category=category_1, complete=complete_1, details=details_1, timeStamp=timeStamp_1)
 
         db.session.add(order_1)
         db.session.commit()
 
-        order_type_2 = "medication"
+        cateogry_2 = "medication"
         complete_2 = True
         details_2 = "Give 25mg of metropolol to patient to lower blood pressure. Monitor patient 15 minutes post administration"
-        timeStamp_2 = str(datetime.now())
+        timeStamp_2 = (datetime.now()).strftime("%Y-%b-%a-%X")
 
-        order_2 = Order(order_type=order_type_2, complete=complete_2, details=details_2, timeStamp=timeStamp_2)
+        order_2 = Order(category=cateogry_2, complete=complete_2, details=details_2, timeStamp=timeStamp_2)
 
         db.session.add(order_2)
         db.session.commit()

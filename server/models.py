@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import validates
 from config import bcrypt
+from datetime import date
 
 from config import db
 
@@ -161,9 +162,14 @@ class Appointment(db.Model, SerializerMixin):
     @validates('time')
     def validate_time(self, key, time):
 
+        print(time)
         hr_min = time.split('-')
-        if not (9<=int(time[0])<=17  and 0<=int(time[1])<60):
-            raise ValueError("Invalid time for an appointment. Must be between 9am and 5pm")
+        print(hr_min)
+        if 9<=int(hr_min[0])<=17:
+            if 0<=int(hr_min[1])<60:
+                return time
+
+        raise ValueError("Invalid time for an appointment. Must be between 9am and 5pm")
 
     def __repr__(self):
         return f'Appointment: {self.title}'
@@ -172,7 +178,7 @@ class Order(db.Model, SerializerMixin):
     __tablename__="orders"
 
     id = db.Column(db.Integer, primary_key=True)
-    order_type = db.Column(db.String, nullable = False)
+    category = db.Column(db.String)
     complete = db.Column(db.Boolean)
     details = db.Column(db.String, nullable=False)
     timeStamp = db.Column(db.String, nullable=False)
