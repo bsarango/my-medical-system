@@ -129,7 +129,7 @@ class SignUp(Resource):
 					username= json.get('username'), 
                     first_name = json.get('firstName'), 
                     last_name = json.get('lastName'), 
-                    specialty = json.get('specialty') 
+                    specialty = json.get('specialty'),
                     office_address=json.get('officeAddress'), 
                     office_numberr=json.get('phoneNumber')
                     )
@@ -177,7 +177,7 @@ api.add_resource(OrdersById, "/orders/<int:id>", endpoint="order")
 api.add_resource(CheckSession, "/check_session", endpoint="check_session")
 api.add_resource(Login, "/Login", endpoint="Login")
 api.add_resource(Logout, "/Logout", endpoint="Logout")
-api.add_resource(Signup, "/Signup", endpoint="Signup")
+api.add_resource(SignUp, "/Signup", endpoint="Signup")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5555)
