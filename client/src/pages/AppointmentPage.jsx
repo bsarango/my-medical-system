@@ -1,10 +1,12 @@
 import React,{useState, useEffect} from 'react'
-import {Link} from "react-router-dom"
+import {Link, useOutletContext} from "react-router-dom"
 import Appointment from "../components/Appointment"
 
 function AppointmentPage(){
 
     const [appointments, setAppointments] = useState([])
+
+    const{loggedIn}= useOutletContext()
 
     useEffect(()=>{
         fetch("/api/appointments")

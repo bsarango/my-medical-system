@@ -54,7 +54,7 @@ class Physician(db.Model, SerializerMixin):
 
     @validates('office_number')
     def validate_office_number(self, key, office_number):
-        if len(office_number) != 10:
+        if len(office_number)!=10:
             raise ValueError("Invalid number, its not 10 digits")
 
         digits_for_number = '0123456789'

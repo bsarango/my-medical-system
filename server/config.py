@@ -6,13 +6,15 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from sqlalchemy import MetaData
+import secrets
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
-app.seceret_key=b'\x17\x92t\reC\x8b=*N\xa8-'
+# app.seceret_key=b'\x17\x92t\reC\x8b=*N\xa8-'
+app.secret_key = secrets.token_hex(16)
 
 metadata = MetaData(naming_convention={
     "ix": "ix_%(column_0_label)s",

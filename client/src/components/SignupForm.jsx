@@ -5,10 +5,10 @@ function SignupForm(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
-    const [specialty, setSpecialy] = useState("")
+    const [specialty, setSpecialty] = useState("")
     const [lastName, setLastName] = useState("")
     const [officeAddress, setOfficeAddress] = useState("")
-    const [officeNumber, setOfficePhoneNumber] = useState("")
+    const [officeNumber, setOfficeNumber] = useState("")
 
     function handleSubmit(e){
         e.preventDefault()
@@ -96,6 +96,48 @@ function SignupForm(){
                     onChange = {e=>setOfficeNumber(e.target.value)}
                 />
                 <br></br>
+                <select onChange={e=>{setSpecialty(e.target.value)}}>
+                    <option
+                        value = "cardiology"
+                    >
+                        Cardiology
+                    </option>
+                    <option
+                        value = "pediatrics"
+                    >
+                        Pediatrics
+                    </option>
+                    <option
+                        value="primary care"
+                    >
+                        Primary Care
+                    </option>
+                    <option
+                        value="nephrology"
+                    >
+                        Nephrology
+                    </option>
+                    <option
+                        value="obstetrics and gynecology"
+                    >
+                        OBGYN
+                    </option>
+                    <option
+                        value="pulmonary"
+                    >
+                        Pulmonary
+                    </option>
+                    <option
+                        value="endocrinology"
+                    >
+                        Endocrinology
+                    </option>
+                    <option
+                        value='dermatology'
+                    >
+                        Dermatology
+                    </option>
+                </select>
                 <button type="submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">SignUp</button>
             </form>
         </div>

@@ -17,7 +17,7 @@ def check_if_logged_in():
         'login',
         'check_session',
     ]
-    if request.endpoint not in open_access_list and (not session.get('patient_id')):
+    if request.endpoint not in open_access_list and (not session.get('physician_id')):
         return {'error':'Patient not authorized'}, 401
 
 class PhysiciansById(Resource):
@@ -61,7 +61,7 @@ class Orders(Resource):
     def post(self):
         if session.get('physician_id'):
             json = request.get_json()
-            time_stamp_string = (json.get(timeStamp)).strftime("%Y-%b-%a-%X")
+            time_stamp_string = (datetime.now()).strftime("%Y-%b-%a-%X")
 
             new_order = Order(category=json.get('category'), complete=json.get('complete'), details=json.get('details'), timeStamp=time_stamp_string, physician_id=session.get('physician_id'), patient_id = json.get('patient'))
 
@@ -126,14 +126,15 @@ class SignUp(Resource):
     def post(self):
         json = request.get_json()
         
-        new_physcian = Physician(
+        new_physician = Physician(
 					username= json.get('username'), 
                     first_name = json.get('firstName'), 
                     last_name = json.get('lastName'), 
                     specialty = json.get('specialty'),
                     office_address=json.get('officeAddress'), 
-                    office_numberr=json.get('phoneNumber')
+                    office_number=json.get('officeNumber')
                     )
+
         new_physician.password_hash = json.get('password')
     
         try:   
@@ -176,9 +177,9 @@ api.add_resource(Appointments, "/appointments", endpoint="appointments")
 api.add_resource(Orders, "/orders", endpoint="orders")
 api.add_resource(OrdersById, "/orders/<int:id>", endpoint="order")
 api.add_resource(CheckSession, "/check_session", endpoint="check_session")
-api.add_resource(Login, "/Login", endpoint="Login")
-api.add_resource(Logout, "/Logout", endpoint="Logout")
-api.add_resource(SignUp, "/Signup", endpoint="Signup")
+api.add_resource(Login, "/login", endpoint="login")
+api.add_resource(Logout, "/logout", endpoint="logout")
+api.add_resource(SignUp, "/signup", endpoint="signup")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
