@@ -8,11 +8,22 @@ from config import db
 class Physician(db.Model, SerializerMixin):
     __tablename__ = "physicians"
 
+    id = db.Column(db.Integer, primary_key=True)
+
+
 class Patient(db.Model, SerializerMixin):
     __tablename__="patients"
 
-class Appointment(db.Model, SerializerMixing):
+    id = db.Column(db.Integer, primary_key=True)
+
+
+class Appointment(db.Model, SerializerMixin):
     __tablename__="appointments"
 
-class Orders(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+
+
+class Order(db.Model, SerializerMixin):
     __tablename__="orders"
+
+    id = db.Column(db.Integer, primary_key=True)
