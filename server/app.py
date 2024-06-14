@@ -1,4 +1,4 @@
-from flask import request, session
+from flask import request, session, send_from_directory
 from flask_restful import Resource
 from config import api, db, app
 
@@ -7,7 +7,8 @@ from models import Physician, Patient, Appointment, Order
 
 @app.route("/")
 def index():
-    return '<h1>Phase 5</h1>'
+    def get():
+        return send_from_directory("../client","index.html")
 
 @app.before_request
 def check_if_logged_in():
@@ -180,4 +181,4 @@ api.add_resource(Logout, "/Logout", endpoint="Logout")
 api.add_resource(SignUp, "/Signup", endpoint="Signup")
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5555)
+    app.run(debug=True, port=5000)
