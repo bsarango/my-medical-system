@@ -1,8 +1,10 @@
 import React,{useEffect, setState} from 'react'
 import LoginForm from '../components/LoginForm'
+import {useOutletContext} from "react-router-dom"
 
 function Login(){
 
+    const {loggedIn} = useOutletContext()
     if(loggedIn){
         return(
             <p>Already Logged In. Please return Home or select an option from the tabs to continue</p>

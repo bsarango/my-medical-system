@@ -1,7 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import {Link, useOutletContext} from "react-router-dom"
 
 function Home(){
+
+    const {loggedIn} = useOutletContext()
 
     if(!loggedIn){
         return(
