@@ -186,10 +186,10 @@ class Order(db.Model, SerializerMixin):
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'))
     physician_id=db.Column(db.Integer, db.ForeignKey('physicians.id'))
 
-    @validates('order_type')
-    def validate_order_type(self,key,order_type):
+    @validates('category')
+    def validate_category(self,key,order_type):
         types = ['medication', 'therapy', 'scan', 'other', 'test', 'labs', 'discontinue']
-        if order_type not in types:
+        if category not in types:
             raise ValueError("Invalid order type")
 
     physician = db.relationship('Physician', back_populates='orders')
