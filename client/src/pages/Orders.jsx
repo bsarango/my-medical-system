@@ -19,10 +19,6 @@ function Orders(){
       });
     },[loggedIn]);
 
-    const ordersToDisplay = orders.map(order=>{
-        return <Order key={order.id} order={order} onDelete={removeOrder} onUpdate={updateOrderList}/>
-    })
-
     function updateOrderList(updatedOrder){
         const newOrderList= orders.map(order=>{
             if(order.id === updatedOrder.id){
@@ -37,6 +33,10 @@ function Orders(){
         const newOrderList = orders.filter(order=>order.id!==deletedOrder.id)
         setOrders(newOrderList)
     }
+    
+    const ordersToDisplay = orders.map(order=>{
+        return <Order key={order.id} order={order} onDelete={removeOrder} onUpdate={updateOrderList}/>
+    })
 
     function addOrderToList(newOrder){
         const newOrderList = [...orders,newOrder]

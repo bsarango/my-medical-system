@@ -45,6 +45,10 @@ function Order({order, onUpdate, onDelete}){
     if(updateOrder){
         return(
             <div>
+                <h2>{order.category}</h2>
+                <p>{order.details}</p>
+                <p>{order.timeStamp}</p>
+                <br></br>
                 <form className = "userForm" onSubmit = {handleSubmit}>
                     <label> Enter the type of Order</label>
                     <select onChange={(e)=>{setCategory(e.target.value)}}>
@@ -119,7 +123,7 @@ function Order({order, onUpdate, onDelete}){
             <p>{order.timeStamp}</p>
             <br></br>
             <button onClick={(e)=>{setUpdateOrder(true)}}>Update Order</button>
-            <button onClick={(e)=>{deleteOrder}}>Delete Order</button>
+            <button onClick={deleteOrder}>Delete Order</button>
         </div>
     )
 }
