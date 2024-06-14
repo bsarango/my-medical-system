@@ -149,10 +149,12 @@ class Appointment(db.Model, SerializerMixin):
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'))
     physician_id=db.Column(db.Integer, db.ForeignKey('physicians.id'))
 
-    # @validates('time')
-    # def validate_time(self, key, time):
+    @validates('time')
+    def validate_time(self, key, time):
 
-    #     if time 
+        hr_min = time.split('-')
+        if not (9<=int(time[0])<=17  and 0<=int(time[1])<60):
+            raise ValueError("Invalid time for an appointment. Must be between 9am and 5pm")
 
     def __repr__(self):
         return f'Appointment: {self.title}'
@@ -164,10 +166,16 @@ class Order(db.Model, SerializerMixin):
     order_type = db.Column(db.String, nullable = False)
     complete = db.Column(db.Boolean)
     details = db.Column(db.String, nullable=False)
-    date_time = db.Column(db.DateTime, nullable=False)
+    timeStamp = db.Column(db.String, nullable=False)
 
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'))
     physician_id=db.Column(db.Integer, db.ForeignKey('physicians.id'))
+
+    @validates('order_type')
+    def validate_order_type(self,key,order_type):
+        types = ['medication', 'therapy', 'scan', 'other', 'test', 'labs', 'discontinue']
+        if order_type not in types:
+            raise ValueError("Invalid order type")
 
     def __repr__(self):
         return f'Order: {self.order}'
