@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 
-function OrderForm({ onAddOrder}){
+function OrderForm({onAddOrder}){
 
     const[patients, setPatients] = useState([])
 
@@ -117,7 +117,7 @@ function OrderForm({ onAddOrder}){
                 <select onChange={e=>{setSelectedPatient(e.target.value)}}>
                     {patientOptions}
                 </select>
-                <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Make Appointment</button>
+                <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Submit Order</button>
             </form>
         </div>
     )

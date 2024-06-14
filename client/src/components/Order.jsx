@@ -31,10 +31,11 @@ function Order({order, onUpdate, onDelete}){
 
     }
 
-    function deletedOrder(e){
+    function deleteOrder(e){
+        console.log("in delete order")
         fetch(`/api/orders/${order.id}`,
         {
-            method: "DELETE",
+            method:"DELETE",
         })
         .then(r=>{if(r.ok){r.json()
             .then(()=>onDelete(order))
@@ -104,8 +105,9 @@ function Order({order, onUpdate, onDelete}){
                     <br></br>
                     <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Update Order</button>
                 </form>
-                <button onClick={(e)=>{setUpdateOrder(false)}}>Cancel Update on Order</button>
-                <button onClick={(e)=>{deletedOrder}}>Delete Order</button>
+                <br></br>
+                <button onClick={e=>{setUpdateOrder(false)}}>Cancel Update on Order</button>
+                <button onClick={(e)=>deleteOrder}>Delete Order</button>
             </div>  
         )
     } 
@@ -117,7 +119,7 @@ function Order({order, onUpdate, onDelete}){
             <p>{order.timeStamp}</p>
             <br></br>
             <button onClick={(e)=>{setUpdateOrder(true)}}>Update Order</button>
-            <button onClick={(e)=>{deletedOrder}}>Delete Order</button>
+            <button onClick={(e)=>{deleteOrder}}>Delete Order</button>
         </div>
     )
 }

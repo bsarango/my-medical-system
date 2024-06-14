@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
     
-  useEffect(()=>{   //To update state
+  useEffect(()=>{  
     fetch("/api/check_session")
     .then(r =>{
       if (r.ok){

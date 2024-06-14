@@ -194,6 +194,7 @@ class Order(db.Model, SerializerMixin):
 
     @validates('category')
     def validate_category(self,key,category):
+        breakpoint()
         types = ['medication', 'therapy', 'scan', 'other', 'test', 'labs', 'discontinue']
         if category not in types:
             raise ValueError("Invalid order type")

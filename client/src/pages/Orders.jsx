@@ -30,12 +30,12 @@ function Orders(){
             }
             return order
         })
-        setAppointments(newOrderList)
+        setOrders(newOrderList)
     }
 
     function removeOrder(deletedOrder){
         const newOrderList = orders.filter(order=>order.id!==deletedOrder.id)
-        setAppointments(newOrderList)
+        setOrders(newOrderList)
     }
 
     function addOrderToList(newOrder){

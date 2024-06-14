@@ -38,7 +38,7 @@ class Patients(Resource):
     def get(self):
 
         if session.get('physician_id'):
-            patients = [patient.to_dict() for patient in Patient.query.filter(Appointment.physician_id==session.get('physician_id')).all()]
+            patients = [patient.to_dict() for patient in Patient.query.all()]
             return patients, 200
 
         return {'message': 'Physician not logged in, please login to continue'}, 401
@@ -69,7 +69,7 @@ class Orders(Resource):
             try:
                 db.session.add(new_order)
                 db.session.commit()
-                return new_orderorder.to_dict(), 201
+                return new_order.to_dict(), 201
             
             except ValueError:
                 return {'error': 'Invalid input made to order. Try again.'}, 400
