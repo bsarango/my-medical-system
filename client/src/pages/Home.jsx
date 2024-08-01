@@ -10,7 +10,7 @@ function Home(){
             <div>
                 <p>Please Log in to Use our Services</p>
                 <Link to = "/login">
-                    <button className="bg-transparent hover:bg-blue-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded">Login</button>
+                    <button>Login</button>
                 </Link>
             </div>
         )

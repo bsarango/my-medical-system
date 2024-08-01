@@ -23,7 +23,7 @@ function LoginForm(){
             body : JSON.stringify(credentialsObj),
         })
         .then(r=>{if(r.ok){
-            r.json().then(signedInPatient=>{console.log(signedInPatient),loggedIn[1]})
+            r.json().then(signedInPatient=>{console.log(signedInPatient),loggedIn[1](true)})
         }})
         
     };
