@@ -1,35 +1,38 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
 
 function NavBar(){
     return(
-        <nav>
-        <NavLink  to="/"
-            className="nav-link bg-blue-300 hover:bg-blue-900 text-stone-800 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded"
+        <Navbar>
+            <NavLink  to="/"
+                className=""
         >
             Home
         </NavLink>
         <NavLink  to="/signup"
-            className = "nav-link bg-blue-300 hover:bg-blue-900 text-stone-800 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded"
+            className ="" 
         >
             SignUp
         </NavLink>
         <NavLink  to="/login"
-            className = "nav-link bg-blue-300 hover:bg-blue-900 text-stone-800 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded"
+            className = ""
         >
             Login
         </NavLink>
         <NavLink  to="/appointments"
-            className = "nav-link bg-blue-300 hover:bg-blue-900 text-stone-800 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded"
+            className = ""
         >
             My Appointments
         </NavLink>
         <NavLink  to="/orders"
-            className = "nav-link bg-blue-300 hover:bg-blue-900 text-stone-800 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded"
-        >
+            className =""
             My Orders
+        >
         </NavLink>
-        </nav>
+        </Navbar>
     )
 }
 
