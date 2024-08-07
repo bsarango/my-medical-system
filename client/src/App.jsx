@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import NavigationBar from './components/Navigationbar'
 import {Outlet} from "react-router-dom"
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)

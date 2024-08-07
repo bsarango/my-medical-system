@@ -8,6 +8,7 @@ function NavigationBar(){
     return(
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
+                <Navbar.Brand href="/">One Medical Central</Navbar.Brand>
                 <NavLink  to="/"
                     className=""
                 >
