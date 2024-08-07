@@ -56,68 +56,80 @@ function OrderForm({onAddOrder}){
 
 
     return(
-        <div>
-            <h2>Enter a new Order with the form</h2>
+        <div className="">
             <form className = "userForm" onSubmit = {handleSubmit}>
-                <label> Enter the type of Order</label>
-                <select onChange={(e)=>{setCategory(e.target.value)}}>
-                    <option  
-                        value={'medication'}
-                        name={'medication'}
-                    >
+                <div className='p-2'>
+                    <label> Enter the type of Order</label>
+                    <select onChange={(e)=>{setCategory(e.target.value)}}>
+                        <option  
+                            value={'medication'}
+                            name={'medication'}
+                        >
                         Medication
-                    </option>
-                    <option
-                        value={'therapy'}
-                        name={'therapy'}
-                    >
+                        </option>
+                    
+                        <option
+                            value={'therapy'}
+                            name={'therapy'}
+                        >
                         Therapy
-                    </option>
-                    <option
-                        value={'scan'}
-                        name={'scan'}
-                    >
+                        </option>
+                    
+                        <option
+                            value={'scan'}
+                            name={'scan'}
+                        >
                         Scan
-                    </option>
-                    <option
-                        value={'test'}
-                        name={'test'}
-                    >
+                        </option>
+                    
+                        <option
+                            value={'test'}
+                            name={'test'}
+                        >
                         Test
-                    </option>
-                    <option
-                        value={'other'}
-                        name={'other'}
-                    >
+                        </option>
+                        
+                        <option
+                            value={'other'}
+                            name={'other'}
+                        >
                         Other
-                    </option>
-                    <option
-                        value={'labs'}
-                        name={'labs'}
-                    >
+                        </option>
+                        <option
+                            value={'labs'}
+                            name={'labs'}
+                        >
                         Labs
-                    </option>
-                    <option
-                        value={'discontinue'}
-                        name={'discontinue'}
-                    >
+                        </option>
+                    
+                        <option
+                            value={'discontinue'}
+                            name={'discontinue'}
+                        >
                         Discontinue
-                    </option>
-                </select>
-                <br></br>
-                <input
-                    className="border-solid border-2 border-green-600 py-1 space-y-1"
-                    type = "text"
-                    name = "details"
-                    value = {details}
-                    onChange = {(e)=>{setDetails(e.target.value)}}
-                />
-                <br></br>
-                <label>Select Patient for the Order</label>
-                <select onChange={e=>{setSelectedPatient(e.target.value)}}>
+                        </option>
+                    </select>
+                </div>
+                
+                <div className="p-2">
+                    <label>Enter Additional Details for this Order</label>
+                    <input
+                        className=""
+                        type = "text"
+                        name = "details"
+                        value = {details}
+                        onChange = {(e)=>{setDetails(e.target.value)}}
+                    />
+                </div>
+                
+                <div className='p-2'>
+                    <label>Select Patient for the Order</label>
+                    <select onChange={e=>{setSelectedPatient(e.target.value)}}>
                     {patientOptions}
-                </select>
-                <button type="Submit" className="bg-green-200 hover:bg-emerald-900 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Submit Order</button>
+                    </select>
+                </div>
+                
+                <button type="Submit" className="">Submit Order</button>
             </form>
         </div>
     )
