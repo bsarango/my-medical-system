@@ -22,7 +22,7 @@ function App() {
     <div>
       <header className = ""> 
         {/* <h1 className="center-text">One Medical Central</h1> */}
-        <NavigationBar/>
+        <NavigationBar className=""/>
         <button className="" onClick={e=>{setLoggedIn(false)}}>LogOut</button>
       </header>
       <Outlet context={{loggedIn:[loggedIn,setLoggedIn]}}/>

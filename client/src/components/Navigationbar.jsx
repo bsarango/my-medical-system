@@ -6,31 +6,32 @@ import Container from 'react-bootstrap/Container'
 
 function NavigationBar(){
     return(
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary border border-secondary p-2">
             <Container>
                 <Navbar.Brand href="/">One Medical Central</Navbar.Brand>
+
                 <NavLink  to="/"
-                    className=""
+                    className="border border-primary rounded border-2"
                 >
                     Home
                 </NavLink>
                 <NavLink  to="/signup"
-                    className ="" 
+                    className ="border border-primary rounded border-2" 
                 >
                     SignUp
                 </NavLink>
                 <NavLink  to="/login"
-                    className = ""
+                    className = "border border-primary rounded border-2"
                 >
                     Login
                 </NavLink>
                 <NavLink  to="/appointments"
-                    className = ""
+                    className = "border border-primary rounded border-2"
                 >
                     My Appointments
                 </NavLink>
                 <NavLink  to="/orders"
-                    className =""
+                    className ="border border-primary rounded border-2"
                 >
                     My Orders
                 </NavLink>
