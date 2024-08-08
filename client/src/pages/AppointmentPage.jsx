@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import {Link, useOutletContext} from "react-router-dom"
 import Appointment from "../components/Appointment"
+import Button from "react-bootstrap/Button"
 
 function AppointmentPage(){
 
@@ -36,6 +37,7 @@ function AppointmentPage(){
 
     return(
         <div>
+            <Button>New Appointment</Button>
             <h2>Here are your current appointments. Please review prior to seeing your patients</h2>
             {displayAppointments}
         </div>

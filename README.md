@@ -13,7 +13,7 @@ Click on code and copy the repo in the SSH format
 To clone to your system, open a window in terminal to a directory that you wish to clone to. Enter the following:
 
 ```
-    git clone https://github.com/bsarango/my-medical-system.git
+    git clone git@github.com:bsarango/my-medical-system.git
 ```
 
 Enter the directory of the project and enter the following for the front end and back end installation in two seperate terminals:
