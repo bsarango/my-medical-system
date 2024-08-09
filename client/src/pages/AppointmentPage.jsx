@@ -1,11 +1,12 @@
 import React,{useState, useEffect} from 'react'
 import {Link, useOutletContext} from "react-router-dom"
 import Appointment from "../components/Appointment"
-import Button from "react-bootstrap/Button"
 
 function AppointmentPage(){
 
     const [appointments, setAppointments] = useState([])
+    const [displayAppointmentForm, setDisplayAppointmentForm] = useState(true)
+    const [formTitle, setFormTitle] = useState("")
 
     const{loggedIn}= useOutletContext()
 
@@ -19,6 +20,33 @@ function AppointmentPage(){
         };
       });
     },[]);
+
+    function makeAppointment(){
+        return "Make Appointment"
+    }
+    
+    if(displayAppointmentForm){
+        return(
+        <form onSubmit={makeAppointment}>
+            <div>
+                <label>Enter Appointment Title</label>
+                <input
+                    className=""
+                    type="text"
+                    name="title"
+                    value={formTitle}
+                    onChange={(e)=>{setFormTitle(e.target.value)}}
+                >
+                </input>
+            </div>
+            <div>
+                <label>Enter Appointment Title</label>
+                {/* Put a calender for enter date and time */}
+            </div>
+            <button type="submit">Make New Appointment</button>
+        </form>
+        )
+    }
     
     const displayAppointments = appointments.map(appointment=>{
         return <Appointment appointment={appointment}/>
@@ -37,7 +65,8 @@ function AppointmentPage(){
 
     return(
         <div>
-            <Button>New Appointment</Button>
+            <Button onClick={()=>{setDisplayAppointmentForm(!displayAppointmentForm)}}>New Appointment</Button>
+            {}
             <h2>Here are your current appointments. Please review prior to seeing your patients</h2>
             {displayAppointments}
         </div>
