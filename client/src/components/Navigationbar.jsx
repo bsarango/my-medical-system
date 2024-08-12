@@ -7,7 +7,7 @@ function NavigationBar(){
     return(
         <Navbar expand="lg" className="bg-body-tertiary border border-secondary p-2">
             <Container>
-                <Navbar.Brand href="/">One Medical Central</Navbar.Brand>
+                <Navbar.Brand href="/" className="fs-3">One Medical Central</Navbar.Brand>
 
                 <NavLink  to="/"
                     className="border border-primary rounded border-2"
