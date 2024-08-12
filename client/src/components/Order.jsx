@@ -32,7 +32,6 @@ function Order({order, onUpdate, onDelete}){
     }
 
     function deleteOrder(e){
-        console.log("in delete order")
         fetch(`/api/orders/${order.id}`,
         {
             method:"DELETE",

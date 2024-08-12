@@ -18,12 +18,20 @@ function App() {
       });
   },[]);
 
+  function handleLogout(e){
+    fetch("/api/logout",
+    {
+      method:"DELETE"
+    })
+    .then(r=>r.json())
+    .then((message)=>{console.log(message),setLoggedIn(false)})
+  }
+
   return (
     <div>
       <header className = ""> 
-        {/* <h1 className="center-text">One Medical Central</h1> */}
         <NavigationBar className=""/>
-        <button className="" onClick={e=>{setLoggedIn(false)}}>LogOut</button>
+        <button className="" onClick={e=>{handleLogout}}>LogOut</button>
       </header>
       <Outlet context={{loggedIn:[loggedIn,setLoggedIn]}}/>
     </div>
