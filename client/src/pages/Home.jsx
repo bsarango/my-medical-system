@@ -25,10 +25,7 @@ function Home(){
                 Did you know that an owl thats a doctor would be called Dr. Who? - Just some Medical Comedy
                 Feel free to view your orders, appointments, or patients using one of the tabs above 
             </p>
-            
-            <p className="p-3 m-position-absolute">
-                Please hit log out before leaving your station to protect your patients' information. Thank you!
-            </p>
+        
         </div>
     )
 }
