@@ -35,8 +35,8 @@ function App() {
   return (
     <div>
       <header className = ""> 
-        <NavigationBar className=""/>
-        <button onClick={handleLogout}>LogOut</button>
+        <NavigationBar className="" handleLogout={handleLogout}/>
+        {/* <button onClick={handleLogout}>LogOut</button> */}
       </header>
       <Outlet context={{loggedIn:[loggedIn,setLoggedIn]}}/>
     </div>

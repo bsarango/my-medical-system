@@ -3,7 +3,8 @@ import {NavLink} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 
-function NavigationBar(){
+function NavigationBar({handleLogout}){
+
     return(
         <Navbar expand="lg" className="bg-body-tertiary border border-secondary p-2">
             <Container>
@@ -19,11 +20,6 @@ function NavigationBar(){
                 >
                     SignUp
                 </NavLink>
-                <NavLink  to="/login"
-                    className = "border border-primary rounded border-2"
-                >
-                    Login
-                </NavLink>
                 <NavLink  to="/appointments"
                     className = "border border-primary rounded border-2"
                 >
@@ -34,6 +30,12 @@ function NavigationBar(){
                 >
                     My Orders
                 </NavLink>
+                <NavLink  to="/login"
+                    className = "border border-primary rounded border-2"
+                >
+                    Login
+                </NavLink>
+                <button onClick={handleLogout}>LogOut</button>
             </Container>
         </Navbar>
     )
