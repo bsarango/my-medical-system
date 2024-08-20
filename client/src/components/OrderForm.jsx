@@ -33,14 +33,13 @@ function OrderForm({onAddOrder}){
 
     function handleSubmit(e){
         e.preventDefault();
-
         const formValues = {
             category:category,
             complete:complete,
             details:details,
             patient: selectedPatient
         }
-
+        
         fetch('/api/orders',
         {
             method: "POST",
@@ -62,49 +61,49 @@ function OrderForm({onAddOrder}){
                     <label> Enter the type of Order</label>
                     <select onChange={(e)=>{setCategory(e.target.value)}}>
                         <option  
-                            value={'medication'}
-                            name={'medication'}
+                            value='medication'
+                            name='medication'
                         >
                         Medication
                         </option>
                     
                         <option
-                            value={'therapy'}
-                            name={'therapy'}
+                            value='therapy'
+                            name='therapy'
                         >
                         Therapy
                         </option>
                     
                         <option
-                            value={'scan'}
-                            name={'scan'}
+                            value='scan'
+                            name='scan'
                         >
                         Scan
                         </option>
                     
                         <option
-                            value={'test'}
-                            name={'test'}
+                            value='test'
+                            name='test'
                         >
                         Test
                         </option>
                         
                         <option
-                            value={'other'}
-                            name={'other'}
+                            value='other'
+                            name='other'
                         >
                         Other
                         </option>
                         <option
-                            value={'labs'}
-                            name={'labs'}
+                            value='labs'
+                            name='labs'
                         >
                         Labs
                         </option>
                     
                         <option
-                            value={'discontinue'}
-                            name={'discontinue'}
+                            value='discontinue'
+                            name='discontinue'
                         >
                         Discontinue
                         </option>
