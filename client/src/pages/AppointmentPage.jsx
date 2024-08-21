@@ -8,11 +8,6 @@ function AppointmentPage(){
     const [appointments, setAppointments] = useState([])
     const [displayAppointmentForm, setDisplayAppointmentForm] = useState(false)
 
-    const [formTitle, setFormTitle] = useState("")
-    const [selectedPatient, setSelectedPatient] = useState(null)
-    const [date, setDate] = useState("")
-    const [time, setTime] = useState("")
-
     const{loggedIn}= useOutletContext()
 
     useEffect(()=>{
@@ -47,20 +42,10 @@ function AppointmentPage(){
             </option>
         )
     })
-
-    function makeAppointment(e){
-        e.preventDefault()
-        
-        const formValues = {
-            title: formTitle,
-            selectedPatient : selectedPatient,
-
-        }
-    }
     
     if(displayAppointmentForm){
         return(
-        <AppointmentForm makeAppointment={makeAppointment} patients={patientOptions} setSelectedPatient={setSelectedPatient}/>
+        <AppointmentForm setDisplayAppointmentForm={setDisplayAppointmentForm} patients={patientOptions}/>
         )
     }
     

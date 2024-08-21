@@ -1,6 +1,21 @@
 import React,{useState} from 'react'
 
-function AppointmentForm(){
+function AppointmentForm({setDisplayAppointmentForm, patients}){
+
+    const [formTitle, setFormTitle] = useState("")
+    const [selectedPatient, setSelectedPatient] = useState(null)
+    const [date, setDate] = useState("")
+    const [time, setTime] = useState("")
+
+    function makeAppointment(e){
+        e.preventDefault()
+        
+        const formValues = {
+            title: formTitle,
+            selectedPatient : selectedPatient,
+
+        }
+    }
 
     return (
         <form onSubmit={makeAppointment}>
@@ -25,6 +40,7 @@ function AppointmentForm(){
                     {patientOptions}
                     </select>
                 </div>
+            <button onClick={setDisplayAppointmentForm}>Cancel</button>
             <button type="submit">Make New Appointment</button>
         </form>
     )
