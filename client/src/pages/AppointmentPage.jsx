@@ -60,7 +60,7 @@ function AppointmentPage(){
     
     if(displayAppointmentForm){
         return(
-        <AppointmentForm/>
+        <AppointmentForm makeAppointment={makeAppointment} patients={patientOptions} setSelectedPatient={setSelectedPatient}/>
         )
     }
     
