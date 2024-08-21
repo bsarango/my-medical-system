@@ -198,6 +198,8 @@ class Order(db.Model, SerializerMixin):
         if category not in types:
             raise ValueError("Invalid order type")
 
+        return category
+
     physician = db.relationship('Physician', back_populates='orders')
     patient = db.relationship('Patient', back_populates='orders')
 
