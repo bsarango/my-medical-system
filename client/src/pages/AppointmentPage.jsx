@@ -32,6 +32,11 @@ function AppointmentPage(){
         });
       },[]);
 
+    function addNewAppointment(newAppointment){
+        const newAppointments = [...appointments,newAppointment]
+        setAppointments(newAppointments)
+    }
+
     const patientOptions = patients.map(patient=>{
         return(
             <option
@@ -45,7 +50,7 @@ function AppointmentPage(){
     
     if(displayAppointmentForm){
         return(
-        <AppointmentForm setDisplayAppointmentForm={setDisplayAppointmentForm} patients={patientOptions}/>
+        <AppointmentForm setDisplayAppointmentForm={setDisplayAppointmentForm} patients={patientOptions} addNewAppointment={addNewAppointment}/>
         )
     }
     

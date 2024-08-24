@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-function AppointmentForm({setDisplayAppointmentForm, patients}){
+function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment}){
 
     const [formTitle, setFormTitle] = useState("")
     const [selectedPatient, setSelectedPatient] = useState(null)
@@ -13,8 +13,23 @@ function AppointmentForm({setDisplayAppointmentForm, patients}){
         const formValues = {
             title: formTitle,
             selectedPatient : selectedPatient,
-
+            date : date,
+            time: time
         }
+
+        fetch("/api/appointments",
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(formValues),
+            })
+            .then(r=>{
+                if(r.ok){
+                    r.json().then(newAppointment=>addNewAppointment(newAppointment))
+                }
+            })
     }
 
     return (
@@ -37,10 +52,10 @@ function AppointmentForm({setDisplayAppointmentForm, patients}){
             <div className='p-2'>
                     <label>Select Patient for the Appointment</label>
                     <select onChange={e=>{setSelectedPatient(e.target.value)}}>
-                    {patientOptions}
+                        {patients}
                     </select>
                 </div>
-            <button onClick={setDisplayAppointmentForm}>Cancel</button>
+            <button onClick={setDisplayAppointmentForm(false)}>Cancel</button>
             <button type="submit">Make New Appointment</button>
         </form>
     )
