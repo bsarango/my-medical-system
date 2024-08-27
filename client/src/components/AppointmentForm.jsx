@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import TimeSelectField from './TimeSelectField'
 
 function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment}){
 
@@ -48,6 +49,10 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
             <div>
                 <label>Enter a Date</label>
                 {/* Put a calender for enter date and time */}
+            </div>
+            <div>
+                <label>Select the Time</label>
+                <TimeSelectField/>
             </div>
             <div className='p-2'>
                     <label>Select Patient for the Appointment</label>
