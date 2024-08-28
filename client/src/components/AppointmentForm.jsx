@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import TimeSelectField from './TimeSelectField'
+import DateSelectField from './DateSelectField'
 
 function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment}){
 
@@ -28,7 +29,7 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
             })
             .then(r=>{
                 if(r.ok){
-                    r.json().then(newAppointment=>addNewAppointment(newAppointment))
+                    r.json().then(newAppointment=>{addNewAppointment(newAppointment),setDisplayAppointmentForm(false)})
                 }
             })
     }
@@ -46,11 +47,12 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
                 >
                 </input>
             </div>
-            <div>
+            <div className="p-2">
                 <label>Enter a Date</label>
                 {/* Put a calender for enter date and time */}
+                <DateSelectField/>
             </div>
-            <div>
+            <div className='p-2'>
                 <label>Select the Time</label>
                 <TimeSelectField/>
             </div>
@@ -60,7 +62,7 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
                         {patients}
                     </select>
                 </div>
-            <button onClick={setDisplayAppointmentForm(false)}>Cancel</button>
+            {/* <button onClick={setDisplayAppointmentForm(false)}>Cancel</button> */}
             <button type="submit">Make New Appointment</button>
         </form>
     )

@@ -37,6 +37,10 @@ function AppointmentPage(){
         setAppointments(newAppointments)
     }
 
+    // function displayApptForm(){
+    //     setDisplayAppointmentForm(!displayAppointmentForm)
+    // }
+
     const patientOptions = patients.map(patient=>{
         return(
             <option
