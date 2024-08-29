@@ -51,12 +51,12 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
 
                 <div className="p-2">
                     <label>Enter a Date</label>
-                    <DateSelectField/>
+                    <DateSelectField setDate={setDate}/>
                 </div>
 
                 <div className='p-2'>
                     <label>Select the Time</label>
-                    <TimeSelectField/>
+                    <TimeSelectField setTime={setTime}/>
                 </div>
 
                 <div className='p-2'>
