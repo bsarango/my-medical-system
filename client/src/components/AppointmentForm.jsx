@@ -35,7 +35,7 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
     }
 
     return (
-        <div>
+        <div className='p-4'>
             <form onSubmit={makeAppointment}>
                 <div>
                     <label>Enter the Reason for the Appointment</label>
