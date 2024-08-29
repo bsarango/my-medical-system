@@ -10,7 +10,7 @@ export default function DatePickerValue() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
-          label="Controlled picker"
+          label="Appointment Date"
           value={value}
           onChange={(newValue) => setValue(newValue)}
         />

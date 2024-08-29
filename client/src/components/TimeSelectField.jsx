@@ -10,7 +10,7 @@ import { TimeField } from '@mui/x-date-pickers/TimeField';
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <TimeField
-        label="Controlled field"
+        label="Appointment Time"
         value={value}
         onChange={(newValue) => setValue(newValue)}
         />

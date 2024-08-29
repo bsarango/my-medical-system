@@ -35,36 +35,41 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
     }
 
     return (
-        <form onSubmit={makeAppointment}>
-            <div>
-                <label>Enter the Reason for the Appointment</label>
-                <input
-                    className=""
-                    type="text"
-                    name="title"
-                    value={formTitle}
-                    onChange={(e)=>{setFormTitle(e.target.value)}}
-                >
-                </input>
-            </div>
-            <div className="p-2">
-                <label>Enter a Date</label>
-                {/* Put a calender for enter date and time */}
-                <DateSelectField/>
-            </div>
-            <div className='p-2'>
-                <label>Select the Time</label>
-                <TimeSelectField/>
-            </div>
-            <div className='p-2'>
-                    <label>Select Patient for the Appointment</label>
-                    <select onChange={e=>{setSelectedPatient(e.target.value)}}>
-                        {patients}
-                    </select>
+        <div>
+            <form onSubmit={makeAppointment}>
+                <div>
+                    <label>Enter the Reason for the Appointment</label>
+                    <input
+                        className=""
+                        type="text"
+                        name="title"
+                        value={formTitle}
+                        onChange={(e)=>{setFormTitle(e.target.value)}}
+                    >
+                    </input>
                 </div>
-            {/* <button onClick={setDisplayAppointmentForm(false)}>Cancel</button> */}
-            <button type="submit">Make New Appointment</button>
-        </form>
+
+                <div className="p-2">
+                    <label>Enter a Date</label>
+                    <DateSelectField/>
+                </div>
+
+                <div className='p-2'>
+                    <label>Select the Time</label>
+                    <TimeSelectField/>
+                </div>
+
+                <div className='p-2'>
+                        <label>Select Patient for the Appointment</label>
+                        <select onChange={e=>{setSelectedPatient(e.target.value)}}>
+                            {patients}
+                        </select>
+                    </div>
+            
+                <button type="submit">Make New Appointment</button>
+            </form>
+            <button onClick={e=>setDisplayAppointmentForm(false)}>Cancel</button>
+        </div>
     )
 
 }
