@@ -55,12 +55,13 @@ class Appointments(Resource):
     def post(self):
         if session.get('physician_id'):
             json = request.get_json()
-
+            
+            #put a try and except to handle errors
             #Get format for date and time to be like this
-            appoint_date= '05-04-2024'
-            appoint_time= '1300'
+            appoint_date= json.get('date')
+            appoint_time= json.get('time')
 
-            new_appointment = Appointment(title=json.get('title'), date=appoint_date, time=appoint_time, details=json.get('details'), patient_id=json.get('patientId'), physician_id=session.get('physician_id'))
+            new_appointment = Appointment(title=json.get('title'), date=appoint_date, time=appoint_time, details=json.get('details'), patient_id=json.get('selectedPatient'), physician_id=session.get('physician_id'))
 
 class Orders(Resource):
 

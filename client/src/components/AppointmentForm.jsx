@@ -18,7 +18,7 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
             date : date,
             time: time
         }
-
+        console.log(formValues)
         fetch("/api/appointments",
             {
                 method: "POST",
