@@ -59,9 +59,19 @@ class Appointments(Resource):
             #put a try and except to handle errors
             #Get format for date and time to be like this
             appoint_date= json.get('date')
-            appoint_time= json.get('time')
+            valid_date = datetime.strptime(appoint_date,'%Y-%m-%d')
 
-            new_appointment = Appointment(title=json.get('title'), date=appoint_date, time=appoint_time, details=json.get('details'), patient_id=json.get('selectedPatient'), physician_id=session.get('physician_id'))
+            new_appointment = Appointment(title=json.get('title'), date=valid_date, time=json.get('time'), details=json.get('details'), patient_id=json.get('selectedPatient'), physician_id=session.get('physician_id'))
+
+            try:
+                db.session.add(new_appointment)
+                db.session.commit()
+                return new_appointment.to_dict(),201
+
+            except ValueError:
+                return {'error':'Unable to create appointment. Try again'},400
+
+        return {'message': 'Physician not logged in. Please log in to make an appointment'}, 401
 
 class Orders(Resource):
 

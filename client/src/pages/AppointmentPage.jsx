@@ -59,7 +59,7 @@ function AppointmentPage(){
     }
     
     const displayAppointments = appointments.map(appointment=>{
-        return <Appointment appointment={appointment}/>
+        return <Appointment key={appointment.id} appointment={appointment}/>
     })
 
     if(!loggedIn){
