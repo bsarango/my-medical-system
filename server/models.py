@@ -168,7 +168,6 @@ class Appointment(db.Model, SerializerMixin):
     @validates('time')
     def validate_time(self, key, time):
 
-        print(time)
         hr_min = time.split('-')
         print(hr_min)
         if 9<=int(hr_min[0])<=17:

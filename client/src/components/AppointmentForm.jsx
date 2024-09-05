@@ -8,6 +8,7 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
     const [selectedPatient, setSelectedPatient] = useState(null)
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
+    const [details, setDetails] = useState("")
 
     function makeAppointment(e){
         e.preventDefault()
@@ -16,7 +17,8 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
             title: formTitle,
             selectedPatient : selectedPatient,
             date : date,
-            time: time
+            time: time,
+            details: details
         }
         console.log(formValues)
         fetch("/api/appointments",
@@ -37,10 +39,10 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
     return (
         <div className='p-4'>
             <form onSubmit={makeAppointment}>
-                <div>
+                <div className=''>
                     <label>Enter the Reason for the Appointment</label>
                     <input
-                        className=""
+                        className="form-control"
                         type="text"
                         name="title"
                         value={formTitle}
@@ -60,12 +62,24 @@ function AppointmentForm({setDisplayAppointmentForm, patients, addNewAppointment
                 </div>
 
                 <div className='p-2'>
-                        <label>Select Patient for the Appointment</label>
-                        <select onChange={e=>{setSelectedPatient(e.target.value)}}>
-                            {patients}
-                        </select>
-                    </div>
-            
+                    <label>Select Patient for the Appointment</label>
+                    <select onChange={e=>{setSelectedPatient(e.target.value)}}>
+                        {patients}
+                    </select>
+                </div>
+
+                <div className='p-2'>
+                    <label>Enter details of the Appointment</label>
+                    <input 
+                        className='form-control'
+                        type='text'
+                        name='details'
+                        value={details}
+                        onChange={(e)=>setDetails(e.target.value)}
+                    >
+                    </input>
+                </div>
+
                 <button type="submit">Make New Appointment</button>
             </form>
             <button onClick={e=>setDisplayAppointmentForm(false)}>Cancel</button>

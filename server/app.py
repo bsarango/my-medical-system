@@ -55,9 +55,6 @@ class Appointments(Resource):
     def post(self):
         if session.get('physician_id'):
             json = request.get_json()
-            
-            #put a try and except to handle errors
-            #Get format for date and time to be like this
             appoint_date= json.get('date')
             valid_date = datetime.strptime(appoint_date,'%Y-%m-%d')
 
